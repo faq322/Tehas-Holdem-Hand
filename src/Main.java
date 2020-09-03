@@ -61,6 +61,7 @@ public class Main {
             result = cardInARow(playerHand[i]);
 
             //ONE SUIT
+            
 
             //REPEATING
             //No need to check for repeating if player has Straight Flush or Royal Flush
@@ -70,9 +71,19 @@ public class Main {
     }
 
     private static int cardInARow(Hand playerHand) {
+        EvaluationTests evaluationTests = new EvaluationTests();
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
         int result = 0;
-        
+        boolean inARow = false;
 
+        //Sort by rank
+        playerHand.sortByRank();
+        System.out.println("SORT BY RANK " + playerHand.getHand()[0].getRank());
+        //Check if there is 5 cards in a row
+        inARow = evaluationTests.inARow(playerHand);
+        //Define result
+        //If 5 cards in a row - its a minimum Straight. So lets stay it for a while
+        result = (inARow) ? 4 : 0;
         return result;
     }
 

@@ -6,8 +6,8 @@ import java.util.Comparator;
 
 public class RankComparator implements Comparator<Object> {
     public int compare(Object card1, Object card2) {
-        short rank1 = ((Card)card1).getRankPoints();
-        short rank2 = ((Card)card2).getRankPoints();
+        int rank1 = ((Card)card1).getRankPoints();
+        int rank2 = ((Card)card2).getRankPoints();
 
         return rank1 - rank2;
     }

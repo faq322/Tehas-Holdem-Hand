@@ -1,6 +1,7 @@
 import model.Card;
 import model.Hand;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 
@@ -11,6 +12,7 @@ public class EvaluationTests {
     }
 
     //main methods
+    //For repeatings
     public Map<Character, Integer> repeatrings(Hand hand) {
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         for (Card card : hand.getHand()) {
@@ -59,4 +61,22 @@ public class EvaluationTests {
         System.out.print("RESULT: " + result);
         return result;
     }
+
+    //For in a row
+    public boolean inARow(Hand hand) {
+        //LinkedHashMap<Character, Integer> map = new LinkedHashMap<Character, Integer>();
+        int[] arr = hand.getHandRankPoints();
+        int i = 1, combo = 0, result =0;
+        while (i++ < arr.length && combo < 5) {
+            if (arr[i] - arr[i - 1] == 1) {
+                combo++;
+            } else {
+                combo = 0;
+            }
+        }
+        boolean inARow = (combo >= 5);
+        return inARow;
+    }
+
+
 }

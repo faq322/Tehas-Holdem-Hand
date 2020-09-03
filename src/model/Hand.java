@@ -3,6 +3,7 @@ package model;
 import model.comparators.RankComparator;
 import model.comparators.SuitComparator;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Hand {
@@ -26,18 +27,33 @@ public class Hand {
         availableCards[i] = card;
     }*/
 
-    private void sortByRank() {
+    public void sortByRank() {
         Arrays.sort(availableCards, new RankComparator());
     }
 
-    private void sortBySuit() {
+    public void sortBySuit() {
         Arrays.sort(availableCards, new SuitComparator());
     }
 
 
     public Card[] getHand() {
-
         return availableCards;
+    }
+
+    public int[] getHandRankPoints() {
+        int[] arr = new int[availableCards.length];
+        for (int i=0;i<availableCards.length;i++){
+            arr[i]=availableCards[i].getRankPoints();
+        }
+        return arr;
+    }
+
+    public char[] getHandRank() {
+        char[] arr = new char[availableCards.length];
+        for (int i=0;i<availableCards.length;i++){
+            arr[i]=availableCards[i].getRank();
+        }
+        return arr;
     }
 
     public void PrintHand(int num) {
