@@ -71,16 +71,19 @@ public class EvaluationTests {
     //For in a row
     public boolean inARow(Hand hand) {
         //LinkedHashMap<Character, Integer> map = new LinkedHashMap<Character, Integer>();
+        hand.sortByRank();
         int[] arr = hand.getHandRankPoints();
+        boolean inARow =false;
         int i = 0, combo = 0, result = 0;
         while (++i < arr.length && combo < 5) {
             if (arr[i] - arr[i - 1] == 1) {
                 combo++;
+                inARow = (combo >= 4);
             } else {
                 combo = 0;
             }
         }
-        boolean inARow = (combo >= 5);
+
         return inARow;
     }
 

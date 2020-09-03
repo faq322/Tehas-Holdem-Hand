@@ -70,6 +70,8 @@ public class Main {
             //No need to check for repeating if player has Straight Flush or Royal Flush
             if (result < 8) _result = cardRepeating(playerHand[i]);
             if (_result > result) result = _result;
+
+            System.out.println("+++++++++++++\n  -TOTAL PLAYER RESULT: " + result+"\n++++++++++++++");
         }
     }
 
