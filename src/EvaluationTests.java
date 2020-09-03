@@ -1,9 +1,7 @@
 import model.Card;
 import model.Hand;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 public class EvaluationTests {
@@ -14,7 +12,7 @@ public class EvaluationTests {
     }
 
     //main methods
-    public void repeatrings(Hand hand){
+    public Map<Character, Integer> repeatrings(Hand hand) {
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         for (Card card : hand.getHand()) {
             char rank = card.getRank();
@@ -25,22 +23,41 @@ public class EvaluationTests {
             }
         }
 
-        Set<Character> keys = map.keySet();
+        System.out.println("Pair: " + map);
+        //Remove unrepeated ranks
+        map.values().removeIf(value -> value.equals(1));
+        System.out.println("Pair: " + map);
 
-        System.out.println("Pair: " +map);
-        System.out.println("Pair: " +keys);
-
-        //Map<Character, Integer> out = new HashMap<Character, Integer>();
-        for (Character ch : keys) {
-            if (map.get(ch) == 1) {
-                System.out.println("REMOVE "+ ch);
-                map.remove(ch);
-            }
-        }
-        System.out.println("Pair: " +map);
-        System.out.println("Pair: " +keys);
-        //System.out.println("Pair: " +map);
+        return map;
     }
 
+    public int defineRepeatings(Map<Character, Integer> map) {
+        ArrayList<Integer> arr = new ArrayList<Integer>(map.values());
+        int result = 0;
 
+        switch (arr.get(0)) {
+            case 2:
+                result = 1; //Pair
+                break;
+            case 3:
+                result = 3; //Three of a kind
+                break;
+            case 4:
+                result = 7; //Four of a kind
+                break;
+        }
+        if (arr.size() == 2) {
+            switch (arr.get(1)) {
+                case 2:
+                    if (result == 1) result = 2; //Two pairs
+                    if (result == 3) result = 6; //Full house
+                    break;
+                case 3:
+                    if (result == 1) result = 6;//Full house
+                    break;
+            }
+        }
+        System.out.print("RESULT: " + result);
+        return result;
+    }
 }

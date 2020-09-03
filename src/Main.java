@@ -4,6 +4,8 @@ import model.Player;
 import model.comparators.RankComparator;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -37,12 +39,29 @@ public class Main {
         }
 
         //StartGame
-        Hand player0Hand = new Hand(board, players[0]);
-        player0Hand.PrintHand(0);
+        Hand[] playerHand = new Hand[playersCount];
+        for (int i = 0; i < playersCount; i++) {
+            System.out.println("\n **************\n PLAYER " + i);
 
-        //System.out.print(player0Hand.isPair());
-        EvaluationTests evaluationTests = new EvaluationTests();
-        evaluationTests.repeatrings(player0Hand);
+            playerHand[i] = new Hand(board, players[i]);
+            playerHand[i].PrintHand(i);
+            int result = 0, _result = 0;
+
+            //IN A ROW
+
+            //ONE SUIT
+
+
+            //REPEATINGS
+            EvaluationTests evaluationTests = new EvaluationTests();
+            Map<Character, Integer> map = new HashMap<Character, Integer>();
+
+            //Check for repeating and get all repeated ranks
+            map = evaluationTests.repeatrings(playerHand[i]);
+            //Define combination
+            if (map.size()!=0)_result = evaluationTests.defineRepeatings(map);
+            if (_result > result) result = _result;
+        }
     }
 
 }
