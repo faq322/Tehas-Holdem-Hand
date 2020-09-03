@@ -32,7 +32,9 @@ If any of these rules are not clear, please consult the standard Texas Hold'em r
 
 The input is to be read from the standard input in the form of:
 
+```
 <5 board cards> <hand 1> <hand 2> <...> <hand N>
+```
  
 ... where:
 
@@ -44,7 +46,9 @@ The input is to be read from the standard input in the form of:
  
 The output is to be written to standard output using the format:
 
+```
 <hand block 1> <hand block 2> <...> <hand block n>
+```
  
 ... where:
  
@@ -61,11 +65,16 @@ alphabetically and separated by "=" signs
  
 **For example:**
 **Input:**
-'4cKs4h8s7s Ad4s Ac4d As9s KhKd 5d6d
-2h3h4h5d8d KdKs 9hJh'
+```
+4cKs4h8s7s Ad4s Ac4d As9s KhKd 5d6d
+2h3h4h5d8d KdKs 9hJh
+```
+
 **Output:**
+```
 Ac4d=Ad4s 5d6d As9s KhKd
 KdKs 9hJh
+```
 
 Your code should read from standard input until EOF is reached, responding with each input line
 with exactly one output line. The program will be tested by piping input to stdin and piping output
