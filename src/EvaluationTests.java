@@ -54,7 +54,13 @@ public class EvaluationTests {
                     if (result == 3) result = 6; //Full house
                     break;
                 case 3:
-                    if (result == 1) result = 6;//Full house
+                    if (result == 1) result = 6; //Full house
+                    if (result == 3) {
+                        // ?
+                    }
+                    break;
+                case 4:
+                    result = 7; //Four of a kind
                     break;
             }
         }
@@ -66,8 +72,8 @@ public class EvaluationTests {
     public boolean inARow(Hand hand) {
         //LinkedHashMap<Character, Integer> map = new LinkedHashMap<Character, Integer>();
         int[] arr = hand.getHandRankPoints();
-        int i = 1, combo = 0, result =0;
-        while (i++ < arr.length && combo < 5) {
+        int i = 0, combo = 0, result = 0;
+        while (++i < arr.length && combo < 5) {
             if (arr[i] - arr[i - 1] == 1) {
                 combo++;
             } else {
@@ -77,6 +83,28 @@ public class EvaluationTests {
         boolean inARow = (combo >= 5);
         return inARow;
     }
+
+    //For Suit
+    public char suit(Hand hand) {
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        boolean result = false;
+        char resultSuit = 'x';
+        for (Card card : hand.getHand()) {
+            char suit = card.getSuit();
+            if (map.containsKey(suit)) {
+                map.put(suit, map.get(suit) + 1);
+                if (map.get(suit) == 5) {
+                    result = true;
+                    resultSuit = suit;
+                }
+            } else {
+                map.put(suit, 1);
+            }
+        }
+
+        return resultSuit;
+    }
+
 
 
 }

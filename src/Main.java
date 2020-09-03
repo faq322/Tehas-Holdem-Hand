@@ -44,6 +44,7 @@ public class Main {
             playerHand[i] = new Hand(board, players[i]);
             playerHand[i].PrintHand(i);
             int result = 0, _result = 0;
+
             //   RESULT             |        CHECKING ORDER       |
             //                      |   THIRD   |  FIRST   |SECOND|
             // 0 - High Card
@@ -61,7 +62,9 @@ public class Main {
             result = cardInARow(playerHand[i]);
 
             //ONE SUIT
-            
+            _result = cardOneSuit(playerHand[i]);
+            if (result == 4 && _result == 5) result = 8;
+            else if (_result > result) result = _result;
 
             //REPEATING
             //No need to check for repeating if player has Straight Flush or Royal Flush
@@ -78,7 +81,6 @@ public class Main {
 
         //Sort by rank
         playerHand.sortByRank();
-        System.out.println("SORT BY RANK " + playerHand.getHand()[0].getRank());
         //Check if there is 5 cards in a row
         inARow = evaluationTests.inARow(playerHand);
         //Define result
@@ -92,10 +94,23 @@ public class Main {
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         int result = 0;
 
-        //Check for repeating and get all repeated ranks
+        //Check for rank repeating and get all repeated ranks
         map = evaluationTests.repeatrings(playerHand);
         //Define combination
         if (map.size() != 0) result = evaluationTests.defineRepeatings(map);
+        return result;
+    }
+
+    private static int cardOneSuit(Hand playerHand) {
+        EvaluationTests evaluationTests = new EvaluationTests();
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        int result = 0;
+
+        //Check for suit repeating and get all repeated suits
+        char suit = evaluationTests.suit(playerHand);
+
+        //Define suit
+        if (suit != 'x') result = 5;
         return result;
     }
 }

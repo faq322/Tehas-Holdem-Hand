@@ -3,6 +3,7 @@ package model;
 public class Player {
     //  4 character string where each 2 characters encode a card, with 2 cards per hand
     private Card card1, card2;
+    private int combination = 0;
 
     //constrictor
     public Player() {

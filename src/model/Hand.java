@@ -42,16 +42,24 @@ public class Hand {
 
     public int[] getHandRankPoints() {
         int[] arr = new int[availableCards.length];
-        for (int i=0;i<availableCards.length;i++){
-            arr[i]=availableCards[i].getRankPoints();
+        for (int i = 0; i < availableCards.length; i++) {
+            arr[i] = availableCards[i].getRankPoints();
         }
         return arr;
     }
 
     public char[] getHandRank() {
         char[] arr = new char[availableCards.length];
-        for (int i=0;i<availableCards.length;i++){
-            arr[i]=availableCards[i].getRank();
+        for (int i = 0; i < availableCards.length; i++) {
+            arr[i] = availableCards[i].getRank();
+        }
+        return arr;
+    }
+
+    public char[] getHandSuit() {
+        char[] arr = new char[availableCards.length];
+        for (int i = 0; i < availableCards.length; i++) {
+            arr[i] = availableCards[i].getSuit();
         }
         return arr;
     }
