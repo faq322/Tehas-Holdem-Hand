@@ -51,18 +51,22 @@ public class Main {
 
             //ONE SUIT
 
-
             //REPEATINGS
-            EvaluationTests evaluationTests = new EvaluationTests();
-            Map<Character, Integer> map = new HashMap<Character, Integer>();
-
-            //Check for repeating and get all repeated ranks
-            map = evaluationTests.repeatrings(playerHand[i]);
-            //Define combination
-            if (map.size()!=0)_result = evaluationTests.defineRepeatings(map);
+            if (result < 4) _result = repeatings(playerHand[i]);
             if (_result > result) result = _result;
         }
     }
 
+    private static int repeatings(Hand playerHand) {
+        EvaluationTests evaluationTests = new EvaluationTests();
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+
+        //Check for repeating and get all repeated ranks
+        map = evaluationTests.repeatrings(playerHand);
+        //Define combination
+        int result = 0;
+        if (map.size() != 0) result = evaluationTests.defineRepeatings(map);
+        return result;
+    }
 }
 

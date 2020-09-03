@@ -8,7 +8,6 @@ public class EvaluationTests {
     Map<Integer, Card> results = new HashMap<Integer, Card>();
 
     public EvaluationTests() {
-        //this.results = results;
     }
 
     //main methods
