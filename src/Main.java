@@ -38,6 +38,7 @@ public class Main {
 
         //StartGame
         Hand[] playerHand = new Hand[playersCount];
+        Map<Integer, Integer> results = new HashMap<Integer, Integer>();
         for (int i = 0; i < playersCount; i++) {
             System.out.println("\n **************\n PLAYER " + i);
 
@@ -71,8 +72,42 @@ public class Main {
             if (result < 8) _result = cardRepeating(playerHand[i]);
             if (_result > result) result = _result;
 
-            System.out.println("+++++++++++++\n  -TOTAL PLAYER RESULT: " + result+"\n++++++++++++++");
+            System.out.println("+++++++++++++\n  -TOTAL PLAYER RESULT: " + result + "\n++++++++++++++");
+            players[i].setCombination(result);
+            if (results.containsKey(result)) {
+                results.put(result, results.get(result) + 1);
+            } else {
+                results.put(result, 1);
+            }
         }
+
+        //OUTPUT
+        String finalOut = "";
+        for (int j = 0; j < 9; j++) {
+            for (int i = 0; i < playersCount; i++) {
+                Map<Integer, Hand> waitlist = new HashMap<Integer, Hand>();
+                if (players[i].getCombination() == j) {
+                    if (results.get(j) == 1) {
+                        finalOut += players[i].getCard(0).getCardString() + players[i].getCard(1).getCardString();
+                        finalOut += " ";
+                    } else {
+                        waitlist.put(j, playerHand[j]);
+                    }
+                }
+                if (!waitlist.isEmpty()) {
+                    finalOut += compareWaitlist(waitlist);
+                }
+            }
+        }
+
+        System.out.println("Final result: " + finalOut);
+    }
+
+    private static String compareWaitlist(Map<Integer, Hand> waitlist) {
+        String result ="";
+        
+
+        return result;
     }
 
     private static int cardInARow(Hand playerHand) {
