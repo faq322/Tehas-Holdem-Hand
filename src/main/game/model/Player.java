@@ -4,7 +4,7 @@ public class Player {
     //  4 character string where each 2 characters encode a card, with 2 cards per hand
     private Card card1, card2;
     private int combination = 0;
-    private int comboCard;
+    private int comboCard1, comboCard2;
 
     //constrictor
     public Player() {
@@ -27,12 +27,20 @@ public class Player {
     //methods
 
 
-    public int getComboCard() {
-        return comboCard;
+    public int getComboCard1() {
+        return comboCard1;
     }
 
-    public void setComboCard(int comboCard) {
-        this.comboCard = comboCard;
+    public void setComboCard1(int comboCard1) {
+        this.comboCard1 = comboCard1;
+    }
+
+    public int getComboCard2() {
+        return comboCard2;
+    }
+
+    public void setComboCard2(int comboCard2) {
+        this.comboCard2 = comboCard2;
     }
 
     public Card getCard(int num) {

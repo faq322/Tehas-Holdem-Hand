@@ -1,4 +1,4 @@
-package game.evaluations;
+package game.process.service.evaluations;
 
 import game.model.Card;
 import game.model.*;
@@ -23,10 +23,9 @@ public class EvaluationMain implements Evaluation {
             }
         }
 
-        System.out.println("Pair: " + map);
         //Remove unrepeated ranks
         map.values().removeIf(value -> value.equals(1));
-        System.out.println("Pair: " + map);
+
 
         return map;
     }
@@ -63,7 +62,6 @@ public class EvaluationMain implements Evaluation {
                     break;
             }
         }
-        System.out.print("RESULT: " + result);
         return result;
     }
 
@@ -75,7 +73,6 @@ public class EvaluationMain implements Evaluation {
         int[] arr = hand.getHandRankPoints();
         boolean inARow = false;
         int i = 0, combo = 0, result = 0;
-        hand.PrintHand(0);
         if (arr[arr.length - 1] == 13 && arr[0] == 1) {
             combo++;
         }
@@ -92,24 +89,21 @@ public class EvaluationMain implements Evaluation {
     }
 
     //For Suit
-    public char suit(Hand hand) {
+    public boolean suit(Hand hand) {
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         boolean result = false;
-        char resultSuit = 'x';
         for (Card card : hand.getHand()) {
             char suit = card.getSuit();
             if (map.containsKey(suit)) {
                 map.put(suit, map.get(suit) + 1);
                 if (map.get(suit) == 5) {
                     result = true;
-                    resultSuit = suit;
                 }
             } else {
                 map.put(suit, 1);
             }
         }
-
-        return resultSuit;
+        return result;
     }
 
 

@@ -7,7 +7,6 @@ public class PlayersServiceMain implements PlayersService {
     public String[] splitPlayers(String inputString) {
         String[] playersStr = inputString.substring(11).split("\\s");
 
-        System.out.println("Players: " + playersStr);
         return playersStr;
     }
 
@@ -16,7 +15,6 @@ public class PlayersServiceMain implements PlayersService {
         String[] playersStr = splitPlayers(inputString);
         int result = playersStr.length;
 
-        System.out.println("Player count: " + result);
         return result;
     }
 

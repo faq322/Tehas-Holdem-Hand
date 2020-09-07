@@ -1,4 +1,4 @@
-package game.evaluations;
+package game.process.service.evaluations;
 
 import game.model.Hand;
 
@@ -12,5 +12,5 @@ public interface Evaluation {
 
     boolean inARow(Hand hand);
 
-    char suit(Hand hand);
+    boolean suit(Hand hand);
 }

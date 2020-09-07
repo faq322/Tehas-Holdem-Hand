@@ -4,7 +4,10 @@ import game.model.Board;
 import game.model.Hand;
 import game.model.Player;
 import game.process.service.combination.CombinationService;
+import game.process.service.combination.CombinationServiceMain;
+import game.process.service.evaluations.EvaluationMain;
 import game.process.service.players.PlayersService;
+import game.process.service.players.PlayersServiceMain;
 import game.validators.Validator;
 
 import java.util.HashMap;
@@ -12,9 +15,10 @@ import java.util.Map;
 
 public class GameProcess {
 
-    private PlayersService playersService;
-    private CombinationService combinationService;
-    
+    private PlayersService playersService = new PlayersServiceMain();
+    private CombinationService combinationService = new CombinationServiceMain();
+    private EvaluationMain evaluationMain = new EvaluationMain();
+
     public String main(String userInput) throws Exception {
         Validator validator = new Validator(); //Create a main.game.validators.Validator object
 
@@ -26,19 +30,16 @@ public class GameProcess {
         Board board = new Board(userInput);
         board.PrintBoard();  // Output board
 
-
         int playersCount = playersService.countPlayers(userInput);
         Player[] players = playersService.initializePlayers(userInput);
-
-        //StartGame
         Hand[] playerHand = new Hand[playersCount];
         Map<Integer, Integer> results = new HashMap<Integer, Integer>();
-        for (int i = 0; i < playersCount; i++) {
-            System.out.println("\n **************\n PLAYER " + i);
 
+        for (int i = 0; i < playersCount; i++) {
+            System.out.print("PLAYER " + i);
             playerHand[i] = new Hand(board, players[i]);
-            playerHand[i].PrintHand(i);
-            int result = 0, _result = 0;
+
+            int result = 0;
 
             //   RESULT             |        CHECKING ORDER       |
             //                      |   THIRD   |  FIRST   |SECOND|
@@ -54,20 +55,40 @@ public class GameProcess {
             // 9 - Royal Flush                  | In a row | Suit |
 
             //IN A ROW
-            result = combinationService.cardInARow(playerHand[i]);
+            int resultCardInARow = combinationService.cardInARow(playerHand[i]);
+            if (resultCardInARow != 0) {
+                result = resultCardInARow;
+                int comboCard = combinationService.comboCardInARow(playerHand[i], result);
+
+                players[i].setComboCard1(comboCard);
+            }
 
             //ONE SUIT
-            _result = combinationService.cardOneSuit(playerHand[i]);
-            if (result == 4 && _result == 5) result = 8;
-            else if (_result > result) result = _result;
+            int resultCardOneSuit = combinationService.cardOneSuit(playerHand[i]);
+            if (result == 4 && resultCardOneSuit == 5) {
+                result = 8;
+                // TODO players[i].setComboCard();
+            } else if (resultCardOneSuit > result) {
+                result = resultCardOneSuit;
+                // TODO players[i].setComboCard();
+            }
 
             //REPEATING
             //No need to check for repeating if player has Straight Flush or Royal Flush
+            if (result <= 8) {
+                int resultCardRepeating = combinationService.cardRepeating(playerHand[i]);
+                if (resultCardRepeating > result) {
+                    result = resultCardRepeating;
+                    // TODO players[i].setComboCard();
+                }
+            }
 
-            if (result < 8) _result = combinationService.cardRepeating(playerHand[i]);
-            if (_result > result) result = _result;
+            if (result == 0) {
+                //TODO High Card
+                //int resultHighCard = combinationService
+            }
 
-            System.out.println("+++++++++++++\n  -TOTAL PLAYER RESULT: " + result + "\n++++++++++++++");
+            System.out.println(" -TOTAL PLAYER RESULT: " + result );
             players[i].setCombination(result);
             if (results.containsKey(result)) {
                 results.put(result, results.get(result) + 1);
@@ -90,7 +111,7 @@ public class GameProcess {
                     }
                 }
                 if (!waitlist.isEmpty()) {
-                    finalOut += compareWaitlist(waitlist);
+                    finalOut += combinationService.compareWaitlist(waitlist);
                 }
             }
         }
@@ -98,19 +119,6 @@ public class GameProcess {
         System.out.println("Final result: " + finalOut);
         return finalOut;
     }
-
-    private static String compareWaitlist(Map<Integer, Hand> waitlist) {
-        String result = "";
-
-
-        return result;
-    }
-
-
-
-
-
-
 
 
 }
