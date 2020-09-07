@@ -54,23 +54,19 @@ public class GameProcess {
             // 8 - Straight Flush               | In a row | Suit |
             // 9 - Royal Flush                  | In a row | Suit |
 
+
             //IN A ROW
             int resultCardInARow = combinationService.cardInARow(playerHand[i]);
-            if (resultCardInARow != 0) {
-                result = resultCardInARow;
-                int comboCard = combinationService.comboCardInARow(playerHand[i], result);
+            if (resultCardInARow != 0) result = resultCardInARow;
 
-                players[i].setComboCard1(comboCard);
-            }
 
             //ONE SUIT
             int resultCardOneSuit = combinationService.cardOneSuit(playerHand[i]);
             if (result == 4 && resultCardOneSuit == 5) {
+                //TODO IF RESULT HIGH CARD = ACE THAN 9 ! IN DEFINE
                 result = 8;
-                // TODO players[i].setComboCard();
             } else if (resultCardOneSuit > result) {
                 result = resultCardOneSuit;
-                // TODO players[i].setComboCard();
             }
 
             //REPEATING
@@ -79,7 +75,6 @@ public class GameProcess {
                 int resultCardRepeating = combinationService.cardRepeating(playerHand[i]);
                 if (resultCardRepeating > result) {
                     result = resultCardRepeating;
-                    // TODO players[i].setComboCard();
                 }
             }
 
@@ -88,7 +83,27 @@ public class GameProcess {
                 //int resultHighCard = combinationService
             }
 
-            System.out.println(" -TOTAL PLAYER RESULT: " + result );
+            switch (result){
+                case 0:
+                    //TODO comboCard 1 = High Card
+                    break;
+                case 1:  case 3:  case 7:
+                    //TODO comboCard 1 = comboCard
+                    //TODO comboCard 2 = High Card
+                    break;
+                case 2: case 6:
+                    //TODO comboCard 1 = comboCard (one pair)
+                    //TODO comboCard 2 = comboCard (second pair)
+                    break;
+                case 4: case 8: case 9:
+                    //TODO comboCard 1 = highest card in a row
+                    int comboCard = combinationService.comboCardInARow(playerHand[i], result);
+                    System.out.print(" |InARow.ComboCard = " + comboCard + "|");
+                    players[i].setComboCard1(comboCard);
+                    break;
+            }
+
+            System.out.println(" -TOTAL PLAYER RESULT: " + result);
             players[i].setCombination(result);
             if (results.containsKey(result)) {
                 results.put(result, results.get(result) + 1);

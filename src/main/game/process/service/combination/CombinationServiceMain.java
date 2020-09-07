@@ -25,7 +25,7 @@ public class CombinationServiceMain implements CombinationService {
 
     @Override
     public int comboCardInARow(Hand playerHand, int combination){
-        int result=0;
+        int result=evaluation.comboCardInARow(playerHand);
 
 
         return result;

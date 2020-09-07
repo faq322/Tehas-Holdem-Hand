@@ -73,7 +73,7 @@ public class EvaluationMain implements Evaluation {
         int[] arr = hand.getHandRankPoints();
         boolean inARow = false;
         int i = 0, combo = 0, result = 0;
-        if (arr[arr.length - 1] == 13 && arr[0] == 1) {
+        if (arr[arr.length - 1] == 12 && arr[0] == 1) {
             combo++;
         }
         while (++i < arr.length && combo < 5) {
@@ -86,6 +86,26 @@ public class EvaluationMain implements Evaluation {
         }
 
         return inARow;
+    }
+
+    public int comboCardInARow(Hand hand) {
+        //LinkedHashMap<Character, Integer> map = new LinkedHashMap<Character, Integer>();
+        hand.sortByRank();
+        int[] arr = hand.getHandRankPoints();
+        int i = 0, combo = 0, result = 0;
+        if (arr[arr.length - 1] == 12 && arr[0] == 1) {
+            combo++;
+        }
+        while (++i < arr.length && combo < 5) {
+            if (arr[i] - arr[i - 1] == 1) {
+                combo++;
+                result = arr[i];
+            } else if (arr[i] - arr[i - 1] != 0) {
+                combo = 0;
+            }
+        }
+
+        return result;
     }
 
     //For Suit

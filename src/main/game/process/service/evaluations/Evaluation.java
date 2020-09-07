@@ -13,4 +13,6 @@ public interface Evaluation {
     boolean inARow(Hand hand);
 
     boolean suit(Hand hand);
+
+    int comboCardInARow(Hand hand);
 }
