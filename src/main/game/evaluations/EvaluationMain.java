@@ -1,19 +1,35 @@
-package main.game.evaluations;
+package game.evaluations;
 
-import main.game.model.Card;
-import main.game.model.*;
+import game.model.Card;
+import game.model.*;
 
 import java.util.*;
 
 
-public class EvaluationMain {
+public class EvaluationMain implements Evaluation {
     Map<Integer, Card> results = new HashMap<Integer, Card>();
 
-    public EvaluationMain() {
-    }
 
     //main methods
+    //For repeatings
+    public Map<Character, Integer> repeatrings(Hand hand) {
+        Map<Character, Integer> map = new HashMap<Character, Integer>();
+        for (Card card : hand.getHand()) {
+            char rank = card.getRank();
+            if (map.containsKey(rank)) {
+                map.put(rank, map.get(rank) + 1);
+            } else {
+                map.put(rank, 1);
+            }
+        }
 
+        System.out.println("Pair: " + map);
+        //Remove unrepeated ranks
+        map.values().removeIf(value -> value.equals(1));
+        System.out.println("Pair: " + map);
+
+        return map;
+    }
 
     public int defineRepeatings(Map<Character, Integer> map) {
         ArrayList<Integer> arr = new ArrayList<Integer>(map.values());
@@ -50,6 +66,7 @@ public class EvaluationMain {
         System.out.print("RESULT: " + result);
         return result;
     }
+
 
     //For in a row
     public boolean inARow(Hand hand) {

@@ -1,4 +1,4 @@
-package main.game.model;
+package game.model;
 
 public class Board {
     // 10 character string where each 2 characters encode a card

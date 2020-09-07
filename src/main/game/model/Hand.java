@@ -1,6 +1,6 @@
-package main.game.model;
+package game.model;
 
-import main.game.comparators.*;
+import game.comparators.*;
 import java.util.Arrays;
 
 public class Hand {
@@ -19,10 +19,6 @@ public class Hand {
             }
         }
     }
-
-/*    private void addCard(Card card, int i) {
-        availableCards[i] = card;
-    }*/
 
     public void sortByRank() {
         Arrays.sort(availableCards, new RankComparator());

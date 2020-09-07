@@ -1,4 +1,4 @@
-import main.game.GameProcess;
+import main.game.process.GameProcess;
 import org.junit.Assert;
 
 public class Test {

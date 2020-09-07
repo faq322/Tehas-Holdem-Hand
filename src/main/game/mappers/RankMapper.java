@@ -1,4 +1,4 @@
-package main.game.mappers;
+package game.mappers;
 
 public class RankMapper {
 

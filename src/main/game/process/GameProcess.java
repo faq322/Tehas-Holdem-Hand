@@ -1,16 +1,21 @@
-package main.game;
+package game.process;
 
-import main.game.evaluations.EvaluationMain;
-import main.game.model.*;
-import main.game.validators.Validator;
+import game.model.Board;
+import game.model.Hand;
+import game.model.Player;
+import game.process.service.combination.CombinationService;
+import game.process.service.players.PlayersService;
+import game.validators.Validator;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GameProcess {
-    public static String main(String userInput) throws Exception {
 
-
+    private PlayersService playersService;
+    private CombinationService combinationService;
+    
+    public String main(String userInput) throws Exception {
         Validator validator = new Validator(); //Create a main.game.validators.Validator object
 
         //Validations
@@ -22,17 +27,8 @@ public class GameProcess {
         board.PrintBoard();  // Output board
 
 
-        //Count players
-        String[] playersStr = userInput.substring(11).split("\\s");
-        int playersCount = playersStr.length;
-        System.out.println("Player count: " + playersCount);
-
-        //Initialize players
-        Player[] players = new Player[playersCount];
-        for (int i = 0; i < playersCount; i++) {
-            players[i] = new Player(playersStr[i]);
-            players[i].PrintPlayer(i);
-        }
+        int playersCount = playersService.countPlayers(userInput);
+        Player[] players = playersService.initializePlayers(userInput);
 
         //StartGame
         Hand[] playerHand = new Hand[playersCount];
@@ -58,16 +54,17 @@ public class GameProcess {
             // 9 - Royal Flush                  | In a row | Suit |
 
             //IN A ROW
-            result = cardInARow(playerHand[i]);
+            result = combinationService.cardInARow(playerHand[i]);
 
             //ONE SUIT
-            _result = cardOneSuit(playerHand[i]);
+            _result = combinationService.cardOneSuit(playerHand[i]);
             if (result == 4 && _result == 5) result = 8;
             else if (_result > result) result = _result;
 
             //REPEATING
             //No need to check for repeating if player has Straight Flush or Royal Flush
-            if (result < 8) _result = cardRepeating(playerHand[i]);
+
+            if (result < 8) _result = combinationService.cardRepeating(playerHand[i]);
             if (_result > result) result = _result;
 
             System.out.println("+++++++++++++\n  -TOTAL PLAYER RESULT: " + result + "\n++++++++++++++");
@@ -103,52 +100,18 @@ public class GameProcess {
     }
 
     private static String compareWaitlist(Map<Integer, Hand> waitlist) {
-        String result ="";
+        String result = "";
 
 
         return result;
     }
 
-    private static int cardInARow(Hand playerHand) {
-        EvaluationMain evaluationMain = new EvaluationMain();
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
-        int result = 0;
-        boolean inARow = false;
 
-        //Sort by rank
-        playerHand.sortByRank();
-        //Check if there is 5 cards in a row
-        inARow = evaluationMain.inARow(playerHand);
-        //Define result
-        //If 5 cards in a row - its a minimum Straight. So lets stay it for a while
-        result = (inARow) ? 4 : 0;
-        return result;
-    }
 
-    private static int cardRepeating(Hand playerHand) {
-        EvaluationMain evaluationMain = new EvaluationMain();
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
-        int result = 0;
 
-        //Check for rank repeating and get all repeated ranks
-        map = evaluationMain.repeatrings(playerHand);
-        //Define combination
-        if (map.size() != 0) result = evaluationMain.defineRepeatings(map);
-        return result;
-    }
 
-    private static int cardOneSuit(Hand playerHand) {
-        EvaluationMain evaluationMain = new EvaluationMain();
-        Map<Character, Integer> map = new HashMap<Character, Integer>();
-        int result = 0;
 
-        //Check for suit repeating and get all repeated suits
-        char suit = evaluationMain.suit(playerHand);
 
-        //Define suit
-        if (suit != 'x') result = 5;
-        return result;
-    }
 
 }
 

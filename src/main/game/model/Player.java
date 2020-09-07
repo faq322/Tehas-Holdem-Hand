@@ -1,4 +1,4 @@
-package main.game.model;
+package game.model;
 
 public class Player {
     //  4 character string where each 2 characters encode a card, with 2 cards per hand

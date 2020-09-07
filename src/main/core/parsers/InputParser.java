@@ -1,4 +1,4 @@
-package main.core.parsers;
+package core.parsers;
 
 import java.util.Scanner;
 

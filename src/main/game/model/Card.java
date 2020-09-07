@@ -1,6 +1,6 @@
-package main.game.model;
+package game.model;
 
-import main.game.mappers.*;
+import game.mappers.*;
 
 public class Card {
     //  the first character representing the rank
