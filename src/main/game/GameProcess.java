@@ -1,19 +1,17 @@
-import model.Board;
-import model.Hand;
-import model.Player;
+package main.game;
+
+import main.game.evaluations.EvaluationMain;
+import main.game.model.*;
+import main.game.validators.Validator;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
-public class Main {
+public class GameProcess {
+    public static String main(String userInput) throws Exception {
 
-    public static void main(String[] args) throws Exception {
-        Validator validator = new Validator(); //Create a Validator object
-        Scanner input = new Scanner(System.in);  // Create a Scanner object
 
-        System.out.println("Input:");
-        String userInput = input.nextLine();  // Read user input
+        Validator validator = new Validator(); //Create a main.game.validators.Validator object
 
         //Validations
         validator.isBoardValid(userInput); //Check if board is valid
@@ -91,7 +89,7 @@ public class Main {
                         finalOut += players[i].getCard(0).getCardString() + players[i].getCard(1).getCardString();
                         finalOut += " ";
                     } else {
-                        waitlist.put(j, playerHand[j]);
+                        waitlist.put(j, playerHand[i]);
                     }
                 }
                 if (!waitlist.isEmpty()) {
@@ -101,17 +99,18 @@ public class Main {
         }
 
         System.out.println("Final result: " + finalOut);
+        return finalOut;
     }
 
     private static String compareWaitlist(Map<Integer, Hand> waitlist) {
         String result ="";
-        
+
 
         return result;
     }
 
     private static int cardInARow(Hand playerHand) {
-        EvaluationTests evaluationTests = new EvaluationTests();
+        EvaluationMain evaluationMain = new EvaluationMain();
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         int result = 0;
         boolean inARow = false;
@@ -119,7 +118,7 @@ public class Main {
         //Sort by rank
         playerHand.sortByRank();
         //Check if there is 5 cards in a row
-        inARow = evaluationTests.inARow(playerHand);
+        inARow = evaluationMain.inARow(playerHand);
         //Define result
         //If 5 cards in a row - its a minimum Straight. So lets stay it for a while
         result = (inARow) ? 4 : 0;
@@ -127,28 +126,29 @@ public class Main {
     }
 
     private static int cardRepeating(Hand playerHand) {
-        EvaluationTests evaluationTests = new EvaluationTests();
+        EvaluationMain evaluationMain = new EvaluationMain();
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         int result = 0;
 
         //Check for rank repeating and get all repeated ranks
-        map = evaluationTests.repeatrings(playerHand);
+        map = evaluationMain.repeatrings(playerHand);
         //Define combination
-        if (map.size() != 0) result = evaluationTests.defineRepeatings(map);
+        if (map.size() != 0) result = evaluationMain.defineRepeatings(map);
         return result;
     }
 
     private static int cardOneSuit(Hand playerHand) {
-        EvaluationTests evaluationTests = new EvaluationTests();
+        EvaluationMain evaluationMain = new EvaluationMain();
         Map<Character, Integer> map = new HashMap<Character, Integer>();
         int result = 0;
 
         //Check for suit repeating and get all repeated suits
-        char suit = evaluationTests.suit(playerHand);
+        char suit = evaluationMain.suit(playerHand);
 
         //Define suit
         if (suit != 'x') result = 5;
         return result;
     }
+
 }
 

@@ -1,10 +1,7 @@
-package model;
+package main.game.model;
 
-import model.comparators.RankComparator;
-import model.comparators.SuitComparator;
-
-import java.lang.reflect.Array;
-import java.util.*;
+import main.game.comparators.*;
+import java.util.Arrays;
 
 public class Hand {
     private Card[] availableCards = new Card[7];

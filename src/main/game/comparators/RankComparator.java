@@ -1,6 +1,6 @@
-package model.comparators;
+package main.game.comparators;
 
-import model.Card;
+import main.game.model.Card;
 
 import java.util.Comparator;
 
