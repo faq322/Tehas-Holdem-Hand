@@ -5,7 +5,10 @@ import game.model.Card;
 import game.model.Hand;
 import game.model.Player;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class EvaluationMain implements Evaluation {
@@ -29,39 +32,24 @@ public class EvaluationMain implements Evaluation {
         //Remove unrepeated ranks
         map.values().removeIf(value -> value.equals(1));
 
-
+        //Remove crap
+        if (map.size()>2) {
+            Map.Entry<Integer, Integer> minEntry = null;
+            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+                if (minEntry == null || entry.getValue() < minEntry.getValue()) {
+                    minEntry = entry;
+                }
+            }
+            int minRank = minEntry.getKey();
+            map.remove(minRank);
+        }
         return map;
     }
 
     public int defineRepeatings(Map<Integer, Integer> map) {
         //RankMapper rankMapper = new RankMapper();
         List<Integer> combinations = new ArrayList<Integer>(map.values());
-
-        //TODO !!!
-       /* Object[][] rankCombo = new Integer[map.size()][2];
-        //List<Integer> rankPoints = new ArrayList<Integer>(map.keySet());
-
-        Set entries = map.entrySet();
-        Iterator entriesIterator = entries.iterator();
-
-        int i = 0;
-        while (entriesIterator.hasNext()) {
-
-            Map.Entry mapping = (Map.Entry) entriesIterator.next();
-
-            rankCombo[i][0] = mapping.getKey();
-            rankCombo[i][1] = mapping.getValue();
-
-            i++;
-        }
-
-
-        System.out.println("\nDEFINE REPEATING ARR[][] = " + Arrays.deepToString(rankCombo));
-*/
-
-        int result = 0;
-
-
+                int result = 0;
         switch (combinations.get(0)) {
             case 2:
                 result = 1; //Pair
@@ -81,11 +69,7 @@ public class EvaluationMain implements Evaluation {
                     break;
                 case 3:
                     if (result == 1) result = 6; //Full house
-                    if (result == 3) {
-                        //char a = map.(3);
-                        // ?
-                        //rankCombo[]
-                    }
+                    if (result == 3) result = 6;
                     break;
                 case 4:
                     result = 7; //Four of a kind

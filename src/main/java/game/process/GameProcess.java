@@ -113,6 +113,10 @@ public class GameProcess {
             }
         }
 
+        if (!finalOut.isEmpty() && finalOut.charAt(finalOut.length() - 1) == ' ') {
+            finalOut = finalOut.substring(0, finalOut.length() - 1);
+        }
+
         System.out.println("Final result: " + finalOut);
         return finalOut;
     }
