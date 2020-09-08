@@ -18,10 +18,22 @@ public class Player {
         rank = input.charAt(charPos++);
         suit = input.charAt(charPos++);
         card1 = new Card(rank, suit);
+        //card1.setInHand(true);
 
         rank = input.charAt(charPos++);
         suit = input.charAt(charPos++);
         card2 = new Card(rank, suit);
+        //card2.setInHand(true);
+
+        int card1RankPoints = card1.getRankPoints();
+        int card2RankPoints = card2.getRankPoints();
+        if (card1RankPoints >= card2RankPoints) {
+            comboCard1 = card1RankPoints;
+            comboCard2 = card2RankPoints;
+        } else {
+            comboCard1 = card2RankPoints;
+            comboCard2 = card1RankPoints;
+        }
     }
 
     //methods
@@ -47,13 +59,13 @@ public class Player {
         return (num == 0) ? card1 : card2;
     }
 
-    public int getCombination() {
+  /*  public int getCombination() {
         return combination;
-    }
+    }*/
 
-    public void setCombination(int combination) {
+    /*public void setCombination(int combination) {
         this.combination = combination;
-    }
+    }*/
 
     public void PrintPlayer(int num) {
         String out = "";

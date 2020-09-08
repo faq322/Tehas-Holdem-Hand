@@ -61,21 +61,18 @@ public class GameProcess {
 
 
             //ONE SUIT
-            int resultCardOneSuit = combinationService.cardOneSuit(playerHand[i]);
+            int resultCardOneSuit = combinationService.cardOneSuitResult(playerHand[i]);
             if (result == 4 && resultCardOneSuit == 5) {
-                //TODO IF RESULT HIGH CARD = ACE THAN 9 ! IN DEFINE
-                result = 8;
-            } else if (resultCardOneSuit > result) {
-                result = resultCardOneSuit;
-            }
+                //if RESULT HIGH CARD = ACE THAN 9 ! IN DEFINE
+                result = (players[i].getComboCard1() == 12) ? 9 : 8;
+            } else if (resultCardOneSuit > result) result = resultCardOneSuit;
+
 
             //REPEATING
             //No need to check for repeating if player has Straight Flush or Royal Flush
             if (result <= 8) {
                 int resultCardRepeating = combinationService.cardRepeating(playerHand[i]);
-                if (resultCardRepeating > result) {
-                    result = resultCardRepeating;
-                }
+                if (resultCardRepeating > result) result = resultCardRepeating;
             }
 
             if (result == 0) {
@@ -83,28 +80,12 @@ public class GameProcess {
                 //int resultHighCard = combinationService
             }
 
-            switch (result){
-                case 0:
-                    //TODO comboCard 1 = High Card
-                    break;
-                case 1:  case 3:  case 7:
-                    //TODO comboCard 1 = comboCard
-                    //TODO comboCard 2 = High Card
-                    break;
-                case 2: case 6:
-                    //TODO comboCard 1 = comboCard (one pair)
-                    //TODO comboCard 2 = comboCard (second pair)
-                    break;
-                case 4: case 8: case 9:
-                    //TODO comboCard 1 = highest card in a row
-                    int comboCard = combinationService.comboCardInARow(playerHand[i], result);
-                    System.out.print(" |InARow.ComboCard = " + comboCard + "|");
-                    players[i].setComboCard1(comboCard);
-                    break;
-            }
 
             System.out.println(" -TOTAL PLAYER RESULT: " + result);
-            players[i].setCombination(result);
+
+
+            playerHand[i].setPoints(result);
+
             if (results.containsKey(result)) {
                 results.put(result, results.get(result) + 1);
             } else {
@@ -114,20 +95,21 @@ public class GameProcess {
 
         //OUTPUT
         String finalOut = "";
-        for (int j = 0; j < 9; j++) {
-            for (int i = 0; i < playersCount; i++) {
-                Map<Integer, Hand> waitlist = new HashMap<Integer, Hand>();
-                if (players[i].getCombination() == j) {
+        for (int j = 0; j < 9; j++) { //result
+            Map<Integer, Hand> waitlist = new HashMap<Integer, Hand>();
+            for (int i = 0; i < playersCount; i++) { //player
+                if (playerHand[i].getPoints() == j) {
                     if (results.get(j) == 1) {
                         finalOut += players[i].getCard(0).getCardString() + players[i].getCard(1).getCardString();
                         finalOut += " ";
                     } else {
-                        waitlist.put(j, playerHand[i]);
+                        waitlist.put(waitlist.size(), playerHand[i]);
                     }
                 }
-                if (!waitlist.isEmpty()) {
-                    finalOut += combinationService.compareWaitlist(waitlist);
-                }
+            }
+            if (!waitlist.isEmpty()) {
+                //String out = players[i].getCard(0).getCardString() + players[i].getCard(1).getCardString();
+                finalOut += combinationService.compareWaitlist(waitlist);
             }
         }
 

@@ -8,6 +8,9 @@ public class Card {
     //  the second character representing the suit
     //  (one of "h", "d", "c", "s")
     private char rank, suit;
+    private boolean inHand;
+    private boolean inPlayer;
+   // private int combination;
 
     //constrictor
     public Card(char inputRank, char inputSuit) {
@@ -20,6 +23,29 @@ public class Card {
         String out = "" + this.rank + this.suit;
         return out;
     }
+
+    public boolean isInPlayer() {
+        return inPlayer;
+    }
+
+    public void setInPlayer(boolean inPlayer) {
+        this.inPlayer = inPlayer;
+    }
+/*    public int getCombination() {
+        return combination;
+    }*/
+
+    public boolean isInHand() {
+        return inHand;
+    }
+
+    public void setInHand(boolean inHand) {
+        this.inHand = inHand;
+    }
+
+/*    public void setCombination(int combination) {
+        this.combination = combination;
+    }*/
 
     public char getRank() {
         return rank;
