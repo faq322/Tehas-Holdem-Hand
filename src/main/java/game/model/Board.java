@@ -26,6 +26,6 @@ public class Board {
         for (int i = 0; i < 5; i++) {
             out += board[i].getCardString();
         }
-        System.out.println("Board is: " + out);
+        //System.out.println("Board is: " + out);
     }
 }

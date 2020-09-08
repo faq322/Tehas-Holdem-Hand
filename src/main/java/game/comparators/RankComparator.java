@@ -5,6 +5,7 @@ import game.model.Card;
 import java.util.Comparator;
 
 public class RankComparator implements Comparator<Object> {
+    @Override
     public int compare(Object card1, Object card2) {
         int rank1 = ((Card)card1).getRankPoints();
         int rank2 = ((Card)card2).getRankPoints();

@@ -113,16 +113,12 @@ public class CombinationServiceMain implements CombinationService {
             }
             if (resultPoints == 4 || resultPoints == 8 || resultPoints == 9) {
                 //TODO comboCard 1 = highest card in a row
-                //int comboCard = comboCardInARow(playerHand[i], result);
-                //System.out.print(" |InARow.ComboCard = " + comboCard + "|");
-                //players[i].setComboCard1(comboCard);
             }
             if (resultPoints == 5) {
-
+                //TODO
             }
 
-
-            System.out.print("AFTER CARD ACTIVATING: ");
+            //System.out.print("AFTER CARD ACTIVATING: ");
             playerHand[i].PrintHandActive(i);
 
 

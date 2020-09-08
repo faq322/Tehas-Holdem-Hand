@@ -101,22 +101,18 @@ public class Hand {
 
     public void PrintHand(int num) {
         String out = "";
-        //Arrays.sort(availableCards, new SuitComparator());
-
         for (int i = 0; i < 7; i++) {
             out += availableCards[i].getCardString();
         }
-        System.out.println("Player[" + num + "] hand: " + out);
+        //System.out.println("Player[" + num + "] hand: " + out);
     }
 
     public void PrintHandActive(int num) {
         String out = "";
-        //Arrays.sort(availableCards, new SuitComparator());
-
         for (int i = 0; i < 7; i++) {
             if (availableCards[i].isInHand()) out += availableCards[i].getCardString();
         }
-        System.out.println("Player[" + num + "] hand: " + out);
+        //System.out.println("Player[" + num + "] hand: " + out);
     }
 
     public int getPoints() {

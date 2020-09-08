@@ -36,7 +36,7 @@ public class GameProcess {
         Map<Integer, Integer> results = new HashMap<Integer, Integer>();
 
         for (int i = 0; i < playersCount; i++) {
-            System.out.print("PLAYER " + i);
+          //  System.out.print("PLAYER " + i);
             playerHand[i] = new Hand(board, players[i]);
 
             int result = 0;
@@ -81,7 +81,7 @@ public class GameProcess {
             }
 
 
-            System.out.println(" -TOTAL PLAYER RESULT: " + result);
+          //  System.out.println(" -TOTAL PLAYER RESULT: " + result);
 
 
             playerHand[i].setPoints(result);
@@ -117,7 +117,7 @@ public class GameProcess {
             finalOut = finalOut.substring(0, finalOut.length() - 1);
         }
 
-        System.out.println("Final result: " + finalOut);
+       // System.out.println("Final result: " + finalOut);
         return finalOut;
     }
 
