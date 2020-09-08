@@ -1,12 +1,17 @@
 # Documentation
-The homework has been written in Java Language ( Maven Project ). 
+The homework has been written in **Java** Language ( **Maven Project** ). 
 
-This is partial solution. Limitations:
+**This is partial solution**. Limitations:
   * In case of ties, the program sometimes prints wrong or empty result.
   * When 2 or more people have the same hand values, the program sometimes prints the wrong result.
+  * Also, the program hasn't been tested well.
   
 # Deployment
+1. Clone this repository to your local machine.
+1. In **Command Line** locate to the directory `...\Texas Holdem\Tehas-Holdem-Hand\target`.
+1. Run command `java -jar TexasHoldem-1.0-SNAPSHOT`.
 
+After that program will start.
 
 # Task
 Your task is to develop an algorithm for comparing the strength of Texas Hold'em Hands. A value of
