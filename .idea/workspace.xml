@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe64e1b0-8717-4c49-a0af-db3cc1d60518" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/game/mappers/RankMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/mappers/RankMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/game/model/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/model/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/game/model/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/model/Hand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/game/model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/model/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/game/process/GameProcess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/process/GameProcess.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/game/process/service/combination/CombinationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/process/service/combination/CombinationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/game/process/service/combination/CombinationServiceMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/process/service/combination/CombinationServiceMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/game/process/service/evaluations/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/process/service/evaluations/Evaluation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/game/process/service/evaluations/EvaluationMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/game/process/service/evaluations/EvaluationMain.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +23,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/game/model/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="1071">
               <caret line="63" column="7" selection-start-line="61" selection-start-column="2" selection-end-line="63" selection-end-column="7" />
               <folding>
                 <element signature="e#677#678#0" expanded="true" />
@@ -62,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/game/process/GameProcess.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="103" selection-start-line="103" selection-end-line="103" />
+            <state relative-caret-position="250">
+              <caret line="39" column="22" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3723#3738#0" expanded="true" />
@@ -75,8 +68,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/game/process/service/combination/CombinationServiceMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
+            <state relative-caret-position="69">
+              <caret line="168" column="12" selection-start-line="168" selection-start-column="12" selection-end-line="168" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2621#2639#0" expanded="true" />
@@ -97,12 +90,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/game/model/Hand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+            <state relative-caret-position="136">
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#273#274#0" expanded="true" />
                 <element signature="e#311#312#0" expanded="true" />
+                <element signature="e#392#393#0" expanded="true" />
+                <element signature="e#421#422#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -474,7 +469,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26639676" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26639676" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -485,8 +480,8 @@
       <window_info id="Job Explorer" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3285968" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.46003553" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.48490232" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46003553" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.6909414" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -641,24 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/game/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="63" column="7" selection-start-line="61" selection-start-column="2" selection-end-line="63" selection-end-column="7" />
-          <folding>
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#710#711#0" expanded="true" />
-            <element signature="e#759#760#0" expanded="true" />
-            <element signature="e#803#804#0" expanded="true" />
-            <element signature="e#837#838#0" expanded="true" />
-            <element signature="e#870#871#0" expanded="true" />
-            <element signature="e#919#920#0" expanded="true" />
-            <element signature="e#963#964#0" expanded="true" />
-            <element signature="e#1471#1472#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/game/process/service/players/PlayersServiceMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -686,29 +663,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/game/process/GameProcess.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3723#3738#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/game/model/Hand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#273#274#0" expanded="true" />
-            <element signature="e#311#312#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/game/process/service/combination/CombinationService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="103">
@@ -719,10 +673,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/game/model/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="63" column="7" selection-start-line="61" selection-start-column="2" selection-end-line="63" selection-end-column="7" />
+          <folding>
+            <element signature="e#677#678#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#759#760#0" expanded="true" />
+            <element signature="e#803#804#0" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#870#871#0" expanded="true" />
+            <element signature="e#919#920#0" expanded="true" />
+            <element signature="e#963#964#0" expanded="true" />
+            <element signature="e#1471#1472#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/game/process/GameProcess.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3723#3738#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/game/model/Hand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#273#274#0" expanded="true" />
+            <element signature="e#311#312#0" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+            <element signature="e#421#422#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/game/process/service/combination/CombinationServiceMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="95" column="8" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="8" />
+        <state relative-caret-position="69">
+          <caret line="168" column="12" selection-start-line="168" selection-start-column="12" selection-end-line="168" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2621#2639#0" expanded="true" />

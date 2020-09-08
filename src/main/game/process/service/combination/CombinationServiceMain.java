@@ -93,7 +93,6 @@ public class CombinationServiceMain implements CombinationService {
     }
 
 
-
     @Override
     public String compareWaitlist(Map<Integer, Hand> waitlist) {
         String result = "";
@@ -151,22 +150,49 @@ public class CombinationServiceMain implements CombinationService {
         resultPlayerHand[0] = playerHand[0];*/
         if (resultPoints == 1 || resultPoints == 3 || resultPoints == 7) {
 
+            for (int ii = 0; ii < playersCount - 1; ii++) {
 
-            for (int ii = 1; ii < playersCount-1; ii++) {
-                playerHand[ii].getComboRepeatings();
-                String output = playerHand[ii].getPlayerCardsString();
-                Boolean equal = false;
-                int[][] playerCombination = playerHand[ii].getComboRepeatings();
-//for (int iii; ii<)
+                //SORTING
+                for (int iii = 0; iii < playersCount - ii - 1; iii++) {
+                    int a = playerHand[iii].getComboRepeatings()[0][0];
+                    int b = playerHand[iii + 1].getComboRepeatings()[0][0];
+                    if (a > b) {
+                        //swap
+                        Hand temp = playerHand[iii];
+                        playerHand[iii] = playerHand[iii + 1];
+                        playerHand[iii + 1] = temp;
+                    }
+                }
+            }
 
-                if (equal) {
+            //SORT IN ALPHABET
+            
+
+            //EQUAL SIGNS
+            String output = "";
+            for (int iii = 0; iii < playersCount - 1; iii++) {
+
+                output+=playerHand[iii].getOutput();
+
+                int a = playerHand[iii].getComboRepeatings()[0][0];
+                int b = playerHand[iii + 1].getComboRepeatings()[0][0];
+                if (a==b) {
+                    String o1 = playerHand[iii].getOutput();
+                    String o2 = playerHand[iii+1].getOutput();
+                    int compare = o1.compareTo(o2);
+                    if (compare < 0){
+
+                    } else {
+
+                    }
                     output += "=";
                 } else {
                     output += " ";
                 }
-
-                result += output;
             }
+            output+=playerHand[playersCount-1].getOutput()+" ";
+            result += output;
+
         }
         return result;
     }

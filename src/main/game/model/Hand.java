@@ -15,6 +15,11 @@ public class Hand {
         return comboRepeatings;
     }
 
+    public String getOutput() {
+        return output;
+    }
+
+
     public void setComboRepeatings(Map<Integer, Integer> comboRepeatings) {
 
         int[][] arr = new int[comboRepeatings.size()][2];
