@@ -1,3 +1,14 @@
+# Documentation
+The homework has been written in Java Language ( Maven Project ). 
+
+This is partial solution. Limitations:
+  * In case of ties, the program sometimes prints wrong or empty result.
+  * When 2 or more people have the same hand values, the program sometimes prints the wrong result.
+  
+# Deployment
+
+
+# Task
 Your task is to develop an algorithm for comparing the strength of Texas Hold'em Hands. A value of
 a Texas Hold'em Hand is the best possible value out of all possible subsets of 5 cards from the 7
 cards which are formed by 5 board cards and 2 hand cards.
